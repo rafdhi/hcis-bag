@@ -1,0 +1,19 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: notification-fcm
+  namespace: ingress-nginx
+  labels:
+    k8s-app: notification-fcm
+spec:
+  ports:
+    - name: notification-fcm
+      protocol: TCP
+      port: 60040
+      targetPort: 60040
+  selector:
+    k8s-app: notification-fcm
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}

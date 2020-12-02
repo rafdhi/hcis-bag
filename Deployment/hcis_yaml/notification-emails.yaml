@@ -1,0 +1,77 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: notification-emails
+  namespace: ingress-nginx
+  labels:
+    k8s-app: notification-emails
+  annotations:
+    deployment.kubernetes.io/revision: '5'
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s-app: notification-emails
+  template:
+    metadata:
+      name: notification-emails
+      creationTimestamp: null
+      labels:
+        k8s-app: notification-emails
+    spec:
+      containers:
+        - name: notification-emails
+          image: 'leevy/hcis-emails:7d01839'
+          env:
+            - name: DB_USER
+              value: hcis
+            - name: DB_URL
+              value: 'jdbc:postgresql://pg:5432/hcis-notification'
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: pg-do-pass
+                  key: password
+            - name: REDIS_URL
+              value: 'redis://:@redis-master:6379'
+            - name: HYSTRIX_TIMEOUTINMS
+              value: '60000'
+            - name: HYSTRIX_REQVOLUME_THRESHOLD
+              value: '20'
+            - name: HYSTRIX_SLEEPWINDOWINMS
+              value: '60000'
+            - name: HYSTRIX_ERRORTHRESHOLD
+              value: '50'
+            - name: HYSTRIX_TIMEINMS
+              value: '180000'
+            - name: HOST_MAIL_SMTP
+              value: wmail.eksad.com
+            - name: USER_MAIL_SMTP
+              value: recr@eksad.com
+            - name: PASSWORD_MAIL_SMTP
+              value: K*Jp$m%@Q2Z5
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: Always
+          securityContext:
+            privileged: false
+            procMount: Default
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      imagePullSecrets:
+        - name: registrypullsecret
+      schedulerName: default-scheduler
+      hostAliases:
+        - ip: 10.0.0.2
+          hostnames:
+            - pg
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600

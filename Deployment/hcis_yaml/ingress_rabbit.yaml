@@ -1,0 +1,20 @@
+kind: Ingress
+apiVersion: extensions/v1beta1
+metadata:
+  name: rabbit-ingress
+  namespace: ingress-nginx
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/affinity: cookie
+spec:
+  tls:
+    - hosts:
+        - rabbit-hris.eksad.com
+  rules:
+    - host: rabbit-hris.eksad.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: rabbitmq
+              servicePort: 15672

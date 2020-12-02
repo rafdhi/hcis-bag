@@ -1,0 +1,19 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: web
+  namespace: hcis-demo
+  labels:
+    k8s-app: web
+spec:
+  ports:
+    - name: web
+      protocol: TCP
+      port: 60043
+      targetPort: 60043
+  selector:
+    k8s-app: web
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}

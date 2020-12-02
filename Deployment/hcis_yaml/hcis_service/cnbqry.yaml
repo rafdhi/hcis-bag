@@ -1,0 +1,19 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: cnbqry
+  namespace: ingress-nginx
+  labels:
+    k8s-app: cnbqry
+spec:
+  ports:
+    - name: cnbqry
+      protocol: TCP
+      port: 60010
+      targetPort: 60010
+  selector:
+    k8s-app: cnbqry
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}

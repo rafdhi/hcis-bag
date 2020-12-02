@@ -1,0 +1,23 @@
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: redis-master
+  namespace: ingress-nginx
+  labels:
+    app: redis
+    role: master
+    tier: backend
+spec:
+  ports:
+  - protocol: TCP
+    port: 6379
+    targetPort: 6379
+  selector:
+    app: redis
+    role: master
+    tier: backend
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}

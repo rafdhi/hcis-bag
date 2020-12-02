@@ -1,0 +1,131 @@
+1	Senior Office Tax
+2	Staff Transaksi Tresuri IR Desk
+3	Staff Transaksi Tresuri IR Desk
+4	Staff Mikro Bisnis
+5	Staff APU-PPT & AML-CTF
+6	Staff APU-PPT & AML-CTF
+7	Senior Officer Quality Assurance
+8	Staff Pendukung Ops, Trops dan Exim
+9	Staff Pendukung Ops, Trops dan Exim
+10	Staff Transaksi Treasuri FX Desk
+11	Account Officer Kor & Kom 2 Sub Direktorat 1
+12	Staff Institusi Keu & Transaksi Perbankan Global
+13	Account Officer Kor & Kom 3 Sub Direktorat 1
+14	Account Officer Kor & Kom 3 Sub Direktorat 1
+15	Staff Analis Sub Dir Kor & Kom Bid Supporting
+16	Executive Officer 1 Dir Kor & Kom 1
+17	Staff Pendukung Ops, Trops dan Exim
+18	Senior Officer Kor & Kom 2 Sub Direktorat 1
+19	Account Officer Kor & Kom 3 Sub Direktorat 2
+20	Account Officer Kor & Kom 1 Sub Direktorat 1
+21	Staff Mikro Bisnis
+22	Staff Pendukung Ops, Trops dan Exim
+23	Senior Officer APU-PPT & AML-CTF
+24	Staff Operasional Prosedur 1
+25	Staff Pengembangan Jaringan
+26	Staff Remedial
+27	Account Officer Kor & Kom 3 Sub Direktorat 1
+28	Account Officer Kor & Kom 2 Sub Direktorat 1
+29	Staff Mikro Bisnis
+30	Account Officer Kor & Kom 1 Sub Direktorat 1
+31	Staff Tinjauan Risiko Kredit
+32	Staff Remedial
+33	Staff Marketing Tresuri
+34	Senior Officer Adm & Pel Dir Kor & Kom Bid Sup
+35	Account Officer Bisnis 6
+36	Staff Back Office Kantor Layanan
+37	Executive Officer Bisnis Mikro 1
+38	Staff Mikro Bisnis
+39	Account Officer Kor & Kom 2 Sub Direktorat 1
+40	Staff Proses Kredit Jabodetabekar
+41	Staff Institusi Keu & Transaksi Perbankan Global
+42	Account Officer Kor & Kom 2 Sub Direktorat 1
+43	Staff Analis Sub Dir Kor & Kom Bid Supporting
+44	Staff Marketing Tresuri
+45	Deputi Direktur Pengembangan Produk & Markom
+46	Staff Pendukung Ops, Trops dan Exim
+47	Staff Back Office Kantor Layanan
+48	Executive Officer 1 Dir Kor & Kom 2
+49	Account Officer Kor & Kom 1 Sub Direktorat 1
+50	Staff Tinjauan Risiko Kredit
+51	Executive Officer 2 Dir Korporasi & Komersial 3
+52	Staff Bisnis Layanan Keuangan Inklusif
+53	Account Officer Kor & Kom 3 Sub Direktorat 2
+54	Staff Vendor Manajemen
+55	Staff Mikro Bisnis
+56	Senior Officer Analis Sub Dir Kor & Kom Bid Sup
+57	Staff Operasional Prosedur 2
+58	Executive Officer Dir Kor & Kom Bid Supporting
+59	Staff Pengembangan Bisnis
+60	Senior Officer Operasional Prosedur 2
+61	Staff Pengembangan Bisnis
+62	Staff Remedial
+63	Staff Tinjauan Risiko Kredit
+64	Staff Admn & Pel Sub Dir Kor & Kom Bid Supporting
+65	Staff Pendukung Ops, Trops dan Exim
+66	Staff Khusus Ritel
+67	Staff Vendor Manajemen
+68	Staff Khusus Ritel
+69	Staff Mikro Bisnis
+70	Staff SKMR Non Risiko Kredit
+71	Executive Officer Penilaian Jaminan
+72	Staff Transaksi Tresuri IR Desk
+73	Staff Vendor Manajemen
+74	Staff Tinjauan Risiko Kredit
+75	Executive Officer Manaj Pengukuran Risiko Kredit
+76	Sekretaris Direktur Korporasi
+77	Staff APU-PPT & AML-CTF
+78	Staff Vendor Manajemen
+79	Executive Officer UMKM & Konsumer
+80	Staff Pendukung Ops, Trops dan Exim
+81	Staff Admn & Pel Sub Dir Kor & Kom Bid Supporting
+82	Account Officer Kor & Kom 1 Sub Direktorat 1
+83	Senior Officer SKN dan RTGS Sentra
+84	Account Officer Kor & Kom 1 Sub Direktorat 1
+85	Staff Institusi Keu & Transaksi Perbankan Global
+86	Staff Remedial
+87	Staff Review Kredit
+88	Staff Pengembangan Jaringan
+89	Staff Vendor Manajemen
+90	Staff Vendor Manajemen
+91	Staff Operasional Prosedur 1
+92	Senior Officer Vendor Manajemen
+93	Executive Officer Remedial
+94	Executive Officer Hukum Perusahaan
+95	Staff Pengembangan Bisnis
+96	Staff Pendukung Ops, Trops dan Exim
+97	Staff SKMR Non Risiko Kredit
+98	Staff Pemantau & Sosialisasi Regulasi
+99	Staff APU-PPT & AML-CTF
+100	Executive Officer Remedial
+101	Senior Officer Operasional Prosedur 1
+102	Staff Vendor Manajemen
+103	Executive Officer Tg. Jwb Sosial & Peng Perusahaan
+104	Staff Pemantau & Sosialisasi Regulasi
+105	Staff Bisnis Layanan Keuangan Inklusif
+106	Staff Vendor Manajemen
+107	Staff Remedial
+108	Executive Officer Manj SI & Vendor Management
+109	Account Officer Bisnis 1
+110	Staff Vendor Manajemen
+111	Staff Tinjauan Risiko Kredit
+112	Executive Officer Bisnis Retail 1
+113	Staff Khusus Ritel
+114	Staff Pengembangan Bisnis
+115	Staff Transaksi Tresuri IR Desk
+116	Executive Officer Pengembangan Bisnis
+117	Senior Officer umum
+118	Staff Pengembangan Bisnis
+119	Staff Vendor Manajemen
+120	Executive Officer APU-PPT & AML-CTF
+121	Staff Oprs Pemantau, Det Invest & Pelap anti Fraud
+122	Staff Admn & Pel Sub Dir Kor & Kom Bid Supporting
+123	Staff Khusus Ritel
+124	Staff Admn & Pel Sub Dir Kor & Kom Bid Supporting
+125	Staff Operasional Prosedur 2
+126	Staff Khusus Perbankan Digital & TI
+127	Executive Officer Kualitas Layanan
+128	Sekretaris Direktur Kepatuhan & SKMR
+129	Sekr. Direktur Oprs, Adm kredit & Kontrol Keuangan
+130	Staff Remedial
+131	Senior Officer Pelaporan

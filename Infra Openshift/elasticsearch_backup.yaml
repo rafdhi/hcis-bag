@@ -1,0 +1,142 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  annotations:
+    template.alpha.openshift.io/wait-for-ready: 'true'
+  creationTimestamp: '2020-10-13T08:26:30Z'
+  generation: 51
+  labels:
+    io.kompose.service: elasticsearch
+  name: elasticsearch
+  namespace: hris
+  resourceVersion: '40405403'
+  selfLink: /apis/apps/v1/namespaces/hris/statefulsets/elasticsearch
+  uid: cba27842-0d2d-11eb-8f4d-005056a6a54e
+spec:
+  podManagementPolicy: OrderedReady
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      io.kompose.service: elasticsearch
+  serviceName: elasticsearch
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: elasticsearch
+    spec:
+      containers:
+        - env:
+            - name: node.data
+              value: 'true'
+            - name: node.master
+              value: 'true'
+            - name: node.ingest
+              value: 'true'
+            - name: node.name
+              valueFrom:
+                fieldRef:
+                  apiVersion: v1
+                  fieldPath: metadata.name
+            - name: node.max_local_storage_nodes
+              value: '1'
+            - name: processors
+              valueFrom:
+                resourceFieldRef:
+                  divisor: '0'
+                  resource: limits.cpu
+            - name: discovery.zen.minimum_master_nodes
+              value: '1'
+            - name: ES_JAVA_OPTS
+              value: '-Xms1024m -Xmx1024m'
+            - name: bootstrap.memory_lock
+              value: 'false'
+          image: >-
+            docker.io/jefferyb/openshift-elastic:elasticsearch-oss-6.3.0-searchguard-22.3
+          imagePullPolicy: IfNotPresent
+          name: elasticsearch
+          ports:
+            - containerPort: 9200
+              name: http
+              protocol: TCP
+            - containerPort: 9300
+              name: transport
+              protocol: TCP
+          resources:
+            limits:
+              cpu: '1'
+              memory: 2Gi
+            requests:
+              cpu: 500m
+              memory: 1Gi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+            - mountPath: /usr/share/elasticsearch/data
+              name: storage
+            - mountPath: /usr/share/elasticsearch/config/elasticsearch.yml
+              name: elasticsearch-config
+              subPath: elasticsearch.yml
+            - mountPath: /usr/share/elasticsearch/config/sgconfig/sg_internal_users.yml
+              name: search-guard-configs
+              subPath: sg_internal_users.yml
+            - mountPath: /usr/share/elasticsearch/config/sgconfig/sg_roles.yml
+              name: search-guard-configs
+              subPath: sg_roles.yml
+            - mountPath: /usr/share/elasticsearch/config/sgconfig/sg_roles_mapping.yml
+              name: search-guard-configs
+              subPath: sg_roles_mapping.yml
+      dnsPolicy: ClusterFirst
+      initContainers:
+        - command:
+            - sysctl
+            - '-w'
+            - vm.max_map_count=262144
+          image: >-
+            docker.io/jefferyb/openshift-elastic:elasticsearch-oss-6.3.0-searchguard-22.3
+          imagePullPolicy: IfNotPresent
+          name: init-sysctl
+          resources: {}
+          securityContext:
+            privileged: true
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+      nodeName: n2.oc.sls.id
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+      volumes:
+        - configMap:
+            defaultMode: 420
+            name: elasticsearch-config
+          name: elasticsearch-config
+        - configMap:
+            defaultMode: 384
+            name: search-guard-configs
+          name: search-guard-configs
+  updateStrategy:
+    rollingUpdate:
+      partition: 0
+    type: RollingUpdate
+  volumeClaimTemplates:
+    - metadata:
+        creationTimestamp: null
+        name: storage
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 10G
+      status:
+        phase: Pending
+status:
+  collisionCount: 0
+  currentReplicas: 1
+  currentRevision: elasticsearch-cc75c67d5
+  observedGeneration: 51
+  readyReplicas: 1
+  replicas: 1
+  updateRevision: elasticsearch-cc75c67d5

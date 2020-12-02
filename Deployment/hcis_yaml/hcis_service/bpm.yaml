@@ -1,0 +1,19 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: bpm
+  namespace: ingress-nginx
+  labels:
+    k8s-app: bpm
+spec:
+  ports:
+    - name: bpm
+      protocol: TCP
+      port: 60030
+      targetPort: 60030
+  selector:
+    k8s-app: bpm
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}

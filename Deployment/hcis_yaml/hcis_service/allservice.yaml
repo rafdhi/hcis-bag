@@ -1,0 +1,971 @@
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: idp
+  namespace: ingress-nginx
+  labels:
+    k8s-app: idp
+spec:
+  ports:
+  - name: idp
+    protocol: TCP
+    port: 60029
+    targetPort: 60029
+  selector:
+    k8s-app: idp
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: bizpar
+  namespace: ingress-nginx
+  labels:
+    k8s-app: bizpar
+spec:
+  ports:
+  - name: bizpar
+    protocol: TCP
+    port: 60004
+    targetPort: 60004
+  selector:
+    k8s-app: bizpar
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: masterdata
+  namespace: ingress-nginx
+  labels:
+    k8s-app: masterdata
+spec:
+  ports:
+  - name: masterdata
+    protocol: TCP
+    port: 60001
+    targetPort: 60001
+  selector:
+    k8s-app: masterdata
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: report
+  namespace: ingress-nginx
+  labels:
+    k8s-app: report
+spec:
+  ports:
+  - name: report
+    protocol: TCP
+    port: 60003
+    targetPort: 60003
+  selector:
+    k8s-app: report
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: emqry
+  namespace: ingress-nginx
+  labels:
+    k8s-app: emqry
+spec:
+  ports:
+  - name: emqry
+    protocol: TCP
+    port: 60006
+    targetPort: 60006
+  selector:
+    k8s-app: emqry
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: emcmd
+  namespace: ingress-nginx
+  labels:
+    k8s-app: emcmd
+spec:
+  ports:
+  - name: emcmd
+    protocol: TCP
+    port: 60005
+    targetPort: 60005
+  selector:
+    k8s-app: emcmd
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: es
+  namespace: ingress-nginx
+  labels:
+    k8s-app: es
+spec:
+  ports:
+  - name: es
+    protocol: TCP
+    port: 60002
+    targetPort: 60002
+  selector:
+    k8s-app: es
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: recruitmentcmd
+  namespace: ingress-nginx
+  labels:
+    k8s-app: recruitmentcmd
+spec:
+  ports:
+  - name: recruitmentcmd
+    protocol: TCP
+    port: 60013
+    targetPort: 60013
+  selector:
+    k8s-app: recruitmentcmd
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: recruitmentqry
+  namespace: ingress-nginx
+  labels:
+    k8s-app: recruitmentqry
+spec:
+  ports:
+  - name: recruitmentqry
+    protocol: TCP
+    port: 60014
+    targetPort: 60014
+  selector:
+    k8s-app: recruitmentqry
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: tmcmd
+  namespace: ingress-nginx
+  labels:
+    k8s-app: tmcmd
+spec:
+  ports:
+  - name: tmcmd
+    protocol: TCP
+    port: 60007
+    targetPort: 60007
+  selector:
+    k8s-app: tmcmd
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: tmqry
+  namespace: ingress-nginx
+  labels:
+    k8s-app: tmqry
+spec:
+  ports:
+  - name: tmqry
+    protocol: TCP
+    port: 60008
+    targetPort: 60008
+  selector:
+    k8s-app: tmqry
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: cnbcmd
+  namespace: ingress-nginx
+  labels:
+    k8s-app: cnbcmd
+spec:
+  ports:
+  - name: cnbcmd
+    protocol: TCP
+    port: 60009
+    targetPort: 60009
+  selector:
+    k8s-app: cnbcmd
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: cnbqry
+  namespace: ingress-nginx
+  labels:
+    k8s-app: cnbqry
+spec:
+  ports:
+  - name: cnbqry
+    protocol: TCP
+    port: 60010
+    targetPort: 60010
+  selector:
+    k8s-app: cnbqry
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: performancecmd
+  namespace: ingress-nginx
+  labels:
+    k8s-app: performancecmd
+spec:
+  ports:
+  - name: performancecmd
+    protocol: TCP
+    port: 60011
+    targetPort: 60011
+  selector:
+    k8s-app: performancecmd
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: performanceqry
+  namespace: ingress-nginx
+  labels:
+    k8s-app: performanceqry
+spec:
+  ports:
+  - name: performanceqry
+    protocol: TCP
+    port: 60012
+    targetPort: 60012
+  selector:
+    k8s-app: performanceqry
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: maintenance
+  namespace: ingress-nginx
+  labels:
+    k8s-app: maintenance
+spec:
+  ports:
+  - name: maintenance
+    protocol: TCP
+    port: 80
+    targetPort: 80
+  selector:
+    k8s-app: maintenance
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: blacklist
+  namespace: ingress-nginx
+  labels:
+    k8s-app: blacklist
+spec:
+  ports:
+  - name: blacklist
+    protocol: TCP
+    port: 60028
+    targetPort: 60028
+  selector:
+    k8s-app: blacklist
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: mvcmd
+  namespace: ingress-nginx
+  labels:
+    k8s-app: mvcmd
+spec:
+  ports:
+  - name: mvcmd
+    protocol: TCP
+    port: 60016
+    targetPort: 60016
+  selector:
+    k8s-app: mvcmd
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: mvqry
+  namespace: ingress-nginx
+  labels:
+    k8s-app: mvqry
+spec:
+  ports:
+  - name: mvqry
+    protocol: TCP
+    port: 60017
+    targetPort: 60017
+  selector:
+    k8s-app: mvqry
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: bpm
+  namespace: ingress-nginx
+  labels:
+    k8s-app: bpm
+spec:
+  ports:
+  - name: bpm
+    protocol: TCP
+    port: 60030
+    targetPort: 60030
+  selector:
+    k8s-app: bpm
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: cfg
+  namespace: ingress-nginx
+  labels:
+    k8s-app: cfg
+spec:
+  ports:
+  - name: cfg
+    protocol: TCP
+    port: 60032
+    targetPort: 60032
+  selector:
+    k8s-app: cfg
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: trncmd
+  namespace: ingress-nginx
+  labels:
+    k8s-app: trncmd
+spec:
+  ports:
+  - name: trncmd
+    protocol: TCP
+    port: 60022
+    targetPort: 60022
+  selector:
+    k8s-app: trncmd
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: trnqry
+  namespace: ingress-nginx
+  labels:
+    k8s-app: trnqry
+spec:
+  ports:
+  - name: trnqry
+    protocol: TCP
+    port: 60023
+    targetPort: 60023
+  selector:
+    k8s-app: trnqry
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: tmnqry
+  namespace: ingress-nginx
+  labels:
+    k8s-app: tmnqry
+spec:
+  ports:
+  - name: tmnqry
+    protocol: TCP
+    port: 60021
+    targetPort: 60021
+  selector:
+    k8s-app: tmnqry
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: tmncmd
+  namespace: ingress-nginx
+  labels:
+    k8s-app: tmncmd
+spec:
+  ports:
+  - name: tmncmd
+    protocol: TCP
+    port: 60020
+    targetPort: 60020
+  selector:
+    k8s-app: tmncmd
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: requestcmd
+  namespace: ingress-nginx
+  labels:
+    k8s-app: requestcmd
+spec:
+  ports:
+  - name: requestcmd
+    protocol: TCP
+    port: 60033
+    targetPort: 60033
+  selector:
+    k8s-app: requestcmd
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: requestqry
+  namespace: ingress-nginx
+  labels:
+    k8s-app: requestqry
+spec:
+  ports:
+  - name: requestqry
+    protocol: TCP
+    port: 60034
+    targetPort: 60034
+  selector:
+    k8s-app: requestqry
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: brms
+  namespace: ingress-nginx
+  labels:
+    k8s-app: brms
+spec:
+  ports:
+  - name: brms
+    protocol: TCP
+    port: 60031
+    targetPort: 60031
+  selector:
+    k8s-app: brms
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: dashboard
+  namespace: ingress-nginx
+  labels:
+    k8s-app: dashboard
+spec:
+  ports:
+  - name: dashboard
+    protocol: TCP
+    port: 60035
+    targetPort: 60035
+  selector:
+    k8s-app: dashboard
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: template
+  namespace: ingress-nginx
+  labels:
+    k8s-app: template
+spec:
+  ports:
+  - name: template
+    protocol: TCP
+    port: 60036
+    targetPort: 60036
+  selector:
+    k8s-app: template
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: websocket
+  namespace: ingress-nginx
+  labels:
+    k8s-app: websocket
+spec:
+  ports:
+  - name: websocket
+    protocol: TCP
+    port: 60038
+    targetPort: 60038
+    nodePort: 32438
+  selector:
+    k8s-app: websocket
+  type: NodePort
+  sessionAffinity: None
+  externalTrafficPolicy: Cluster
+status:
+  loadBalancer: {}
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: talentcmd
+  namespace: ingress-nginx
+  labels:
+    k8s-app: talentcmd
+spec:
+  ports:
+  - name: talentcmd
+    protocol: TCP
+    port: 60041
+    targetPort: 60041
+  selector:
+    k8s-app: talentcmd
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: talentqry
+  namespace: ingress-nginx
+  labels:
+    k8s-app: talentqry
+spec:
+  ports:
+  - name: talentqry
+    protocol: TCP
+    port: 60042
+    targetPort: 60042
+  selector:
+    k8s-app: talentqry
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: webboot
+  namespace: ingress-nginx
+  labels:
+    k8s-app: webboott
+spec:
+  ports:
+  - name: webboot
+    protocol: TCP
+    port: 60043
+    targetPort: 60043
+  selector:
+    k8s-app: webboot
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: loanqry
+  namespace: ingress-nginx
+  labels:
+    k8s-app: loanqry
+spec:
+  ports:
+  - name: loanqry
+    protocol: TCP
+    port: 60025
+    targetPort: 60025
+  selector:
+    k8s-app: loanqry
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}
+
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: loancmd
+  namespace: ingress-nginx
+  labels:
+    k8s-app: loancmd
+spec:
+  ports:
+  - name: loancmd
+    protocol: TCP
+    port: 60024
+    targetPort: 60024
+  selector:
+    k8s-app: loancmd
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: outsourcecmd
+  namespace: ingress-nginx
+  labels:
+    k8s-app: outsourcecmd
+spec:
+  ports:
+  - name: outsourcecmd
+    protocol: TCP
+    port: 60018
+    targetPort: 60018
+  selector:
+    k8s-app: outsourcecmd
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: outsourceqry
+  namespace: ingress-nginx
+  labels:
+    k8s-app: outsourceqry
+spec:
+  ports:
+  - name: outsourceqry
+    protocol: TCP
+    port: 60019
+    targetPort: 60019
+  selector:
+    k8s-app: outsourceqry
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: notification-fcm
+  namespace: ingress-nginx
+  labels:
+    k8s-app: notification-fcm
+spec:
+  ports:
+  - name: notification-fcm
+    protocol: TCP
+    port: 60040
+    targetPort: 60040
+  selector:
+    k8s-app: notification-fcm
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: rabbit
+  namespace: ingress-nginx
+  labels:
+    k8s-app: rabbit
+spec:
+  ports:
+  - name: rabbit
+    protocol: TCP
+    port: 60046
+    targetPort: 60046
+  selector:
+    k8s-app: rabbit
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: hcis-elasticsearch
+  namespace: ingress-nginx
+  labels:
+    k8s-app: hcis-elasticsearch
+spec:
+  ports:
+  - name: hcis-elasticsearch
+    protocol: TCP
+    port: 60045
+    targetPort: 60045
+  selector:
+    k8s-app: hcis-elasticsearch
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: movementscheduler
+  namespace: ingress-nginx
+  labels:
+    k8s-app: movementscheduler
+spec:
+  ports:
+  - name: movementscheduler
+    protocol: TCP
+    port: 60047
+    targetPort: 60047
+  selector:
+    k8s-app: movementscheduler
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: notification-emails
+  namespace: ingress-nginx
+  labels:
+    k8s-app: notification-emails
+spec:
+  ports:
+  - name: notification-emails
+    protocol: TCP
+    port: 60049
+    targetPort: 60049
+  selector:
+    k8s-app: notification-emails
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: hcis-elasticsearch-scheduler
+  namespace: ingress-nginx
+  labels:
+    k8s-app: hcis-elasticsearch-scheduler
+spec:
+  ports:
+    - name: hcis-elasticsearch-scheduler
+      protocol: TCP
+      port: 60048
+      targetPort: 60048
+  selector:
+    k8s-app: hcis-elasticsearch-scheduler
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}
+
+

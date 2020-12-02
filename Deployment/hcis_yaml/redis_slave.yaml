@@ -1,0 +1,72 @@
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: redis-slave
+  namespace: ingress-nginx
+  labels:
+    app: redis
+  annotations:
+    deployment.kubernetes.io/revision: '1'
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: redis
+      role: slave
+      tier: backend
+  template:
+    metadata:
+      creationTimestamp: 
+      labels:
+        app: redis
+        role: slave
+        tier: backend
+    spec:
+      containers:
+      - name: slave
+        image: gcr.io/google_samples/gb-redisslave:v3
+        ports:
+        - containerPort: 6379
+          protocol: TCP
+        env:
+        - name: GET_HOSTS_FROM
+          value: dns
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+        terminationMessagePath: "/dev/termination-log"
+        terminationMessagePolicy: File
+        imagePullPolicy: IfNotPresent
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600
+status:
+  observedGeneration: 5
+  replicas: 2
+  updatedReplicas: 2
+  readyReplicas: 2
+  availableReplicas: 2
+  conditions:
+  - type: Progressing
+    status: 'True'
+    lastUpdateTime: '2019-09-07T18:22:59Z'
+    lastTransitionTime: '2019-09-07T18:22:49Z'
+    reason: NewReplicaSetAvailable
+    message: ReplicaSet "redis-slave-6bb9896d48" has successfully progressed.
+  - type: Available
+    status: 'True'
+    lastUpdateTime: '2020-10-16T13:18:11Z'
+    lastTransitionTime: '2020-10-16T13:18:11Z'
+    reason: MinimumReplicasAvailable
+    message: Deployment has minimum availability.

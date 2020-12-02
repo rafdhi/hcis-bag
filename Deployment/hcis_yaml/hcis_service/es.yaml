@@ -1,0 +1,19 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: es
+  namespace: ingress-nginx
+  labels:
+    k8s-app: es
+spec:
+  ports:
+    - name: es
+      protocol: TCP
+      port: 60002
+      targetPort: 60002
+  selector:
+    k8s-app: es
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}

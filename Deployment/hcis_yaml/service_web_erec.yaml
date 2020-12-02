@@ -1,0 +1,19 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: web-sls-erecruitment
+  namespace: ingress-nginx
+  labels:
+    k8s-app: web-sls-erecruitment
+spec:
+  ports:
+    - name: web-sls-erecruitment
+      protocol: TCP
+      port: 60044
+      targetPort: 60044
+  selector:
+    k8s-app: web-sls-erecruitment
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}

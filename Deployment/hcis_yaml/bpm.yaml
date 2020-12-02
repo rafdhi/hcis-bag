@@ -1,0 +1,149 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: bpm
+  namespace: ingress-nginx
+  labels:
+    k8s-app: bpm
+  annotations:
+    deployment.kubernetes.io/revision: '1'
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s-app: bpm
+  template:
+    metadata:
+      name: bpm
+      creationTimestamp: null
+      labels:
+        k8s-app: bpm
+    spec:
+      containers:
+        - name: bpm
+          image: 'leevy/hcis-bpm:866adc8'
+          env:
+            - name: DB_USER
+              value: hcis
+            - name: DB_URL
+              value: 'jdbc:postgresql://pg:5432/hcis-bpm'
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: pg-do-pass
+                  key: password
+            - name: MASTERDATA_URL
+              value: 'http://masterdata:60001'
+            - name: IDP_URL
+              value: 'http://idp:60029'
+            - name: CFG_URL
+              value: 'http://cfg:60032'
+            - name: BIZPAR_URL
+              value: 'http://bizpar:60004'
+            - name: ES_URL
+              value: 'http://es:60002'
+            - name: LOAN_CMD_URL
+              value: 'http://loancmd:60024'
+            - name: LOAN_QRY_URL
+              value: 'http://loanqry:60025'
+            - name: RECRUITMENT_CMD_URL
+              value: 'http://recruitmentcmd:60013'
+            - name: RECRUITMENT_QRY_URL
+              value: 'http://recruitmentqry:60014'
+            - name: EM_CMD_URL
+              value: 'http://emcmd:60005'
+            - name: EM_QRY_URL
+              value: 'http://emqry:60006'
+            - name: TM_CMD_URL
+              value: 'http://tmcmd:60007'
+            - name: TM_QRY_URL
+              value: 'http://tmqry:60008'
+            - name: MV_QRY_URL
+              value: 'http://mvqry:60017'
+            - name: MV_CMD_URL
+              value: 'http://mvcmd:60016'
+            - name: TMN_QRY_URL
+              value: 'http://tmnqry:60021'
+            - name: TMN_CMD_URL
+              value: 'http://tmncmd:60020'
+            - name: REQUEST_QRY_URL
+              value: 'http://requestqry:60034'
+            - name: REQUEST_CMD_URL
+              value: 'http://requestcmd:60033'
+            - name: TRN_QRY_URL
+              value: 'http://trnqry:60023'
+            - name: TRN_CMD_URL
+              value: 'http://trncmd:60022'
+            - name: BLACKLIST_URL
+              value: 'http://blacklist:60028'
+            - name: CNB_CMD_URL
+              value: 'http://cnbcmd:60009'
+            - name: CNB_QRY_URL
+              value: 'http://cnbqry:60010'
+            - name: ERECRUITMENT_URL
+              value: 'http://erecruitment:60039'
+            - name: BRMS_URL
+              value: 'http://brms:60031'
+            - name: PERFORMANCE_QRY_URL
+              value: 'http://performanceqry:60012'
+            - name: PERFORMANCE_CMD_URL
+              value: 'http://performancecmd:60011'
+            - name: ELASTIC_SEARCH_URL
+              value: 'http://hcis-elasticsearch:60045'
+            - name: TALENT_QRY_URL
+              value: 'http://talentqry:60042'
+            - name: TALENT_CMD_URL
+              value: 'http://talentcmd:60041'
+            - name: RABBITMQ_HOST
+              value: rabbitmq
+            - name: RABBITMQ_USERNAME
+              value: user
+            - name: RABBITMQ_PASSWORD
+              value: 3tTtKhfISe
+            - name: HYSTRIX_TIMEOUTINMS
+              value: '60000'
+            - name: HYSTRIX_REQVOLUME_THRESHOLD
+              value: '20'
+            - name: HYSTRIX_SLEEPWINDOWINMS
+              value: '60000'
+            - name: HYSTRIX_ERRORTHRESHOLD
+              value: '50'
+            - name: HYSTRIX_TIMEINMS
+              value: '180000'
+            - name: HIKARI_CONNECTION_TIMEOUT
+              value: '20000'
+            - name: HIKARI_MIN_IDLE
+              value: '10'
+            - name: HIKARI_MAXPOOL_SIZE
+              value: '20'
+            - name: HIKARI_IDLE_TIMEOUT
+              value: '100000'
+            - name: HIKARI_MAX_LIFETIME
+              value: '1000'
+            - name: HIKARI_MAX_AUTOCOMMIT
+              value: 'true'
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: Always
+          securityContext:
+            privileged: false
+            procMount: Default
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      imagePullSecrets:
+        - name: registrypullsecret
+      schedulerName: default-scheduler
+      hostAliases:
+        - ip: 10.0.0.2
+          hostnames:
+            - pg
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600

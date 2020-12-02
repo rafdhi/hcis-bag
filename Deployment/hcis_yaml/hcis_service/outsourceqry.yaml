@@ -1,0 +1,19 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: outsourceqry
+  namespace: ingress-nginx
+  labels:
+    k8s-app: outsourceqry
+spec:
+  ports:
+    - name: outsourceqry
+      protocol: TCP
+      port: 60019
+      targetPort: 60019
+  selector:
+    k8s-app: outsourceqry
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}

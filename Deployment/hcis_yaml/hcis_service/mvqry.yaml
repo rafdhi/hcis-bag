@@ -1,0 +1,19 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: mvqry
+  namespace: ingress-nginx
+  labels:
+    k8s-app: mvqry
+spec:
+  ports:
+    - name: mvqry
+      protocol: TCP
+      port: 60017
+      targetPort: 60017
+  selector:
+    k8s-app: mvqry
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}

@@ -1,0 +1,48 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: web
+  namespace: hcis-demo
+  labels:
+    k8s-app: web
+  annotations:
+    deployment.kubernetes.io/revision: '1'
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s-app: web
+  template:
+    metadata:
+      name: web
+      creationTimestamp: null
+      labels:
+        k8s-app: web
+    spec:
+      containers:
+        - name: web
+          image: 'leevy/hcis-react-ui-boot:STG-291020-BAG'
+          env:
+            - name: SKIP_PREFLIGHT_CHECK
+              value: 'true'
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: Always
+          securityContext:
+            privileged: false
+            procMount: Default
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      imagePullSecrets:
+        - name: registrypullsecret
+      schedulerName: default-scheduler
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600

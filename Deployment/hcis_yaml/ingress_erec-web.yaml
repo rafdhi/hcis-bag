@@ -1,0 +1,22 @@
+kind: Ingress
+apiVersion: extensions/v1beta1
+metadata:
+  name: erec-web-ingress
+  namespace: ingress-nginx
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/affinity: cookie
+    nginx.ingress.kubernetes.io/session-cookie-hash: sha1
+    nginx.ingress.kubernetes.io/session-cookie-name: route
+spec:
+  tls:
+    - hosts:
+        - erec-hris.eksad.com
+  rules:
+    - host: erec-hris.eksad.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: web-sls-erecruitment
+              servicePort: 60044

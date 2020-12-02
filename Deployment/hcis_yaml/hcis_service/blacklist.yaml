@@ -1,0 +1,19 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: blacklist
+  namespace: ingress-nginx
+  labels:
+    k8s-app: blacklist
+spec:
+  ports:
+    - name: blacklist
+      protocol: TCP
+      port: 60028
+      targetPort: 60028
+  selector:
+    k8s-app: blacklist
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}

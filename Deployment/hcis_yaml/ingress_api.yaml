@@ -1,0 +1,168 @@
+kind: Ingress
+apiVersion: extensions/v1beta1
+metadata:
+  name: api-ingress
+  namespace: ingress-nginx
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/enable-cors: 'true'
+    nginx.ingress.kubernetes.io/proxy-body-size: 25m
+    nginx.ingress.kubernetes.io/proxy-buffer-size: 16K
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    nginx/client_max_body_size: 100m
+spec:
+  tls:
+    - hosts:
+        - api-hris.eksad.com
+  rules:
+    - host: api-hris.eksad.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: maintenance
+              servicePort: 80
+          - path: /cnbqry(/|$)(.*)
+            backend:
+              serviceName: cnbqry
+              servicePort: 60010
+          - path: /cnbcmd(/|$)(.*)
+            backend:
+              serviceName: cnbcmd
+              servicePort: 60009
+          - path: /masterdata(/|$)(.*)
+            backend:
+              serviceName: masterdata
+              servicePort: 60001
+          - path: /bizpar(/|$)(.*)
+            backend:
+              serviceName: bizpar
+              servicePort: 60004
+          - path: /idp(/|$)(.*)
+            backend:
+              serviceName: idp
+              servicePort: 60029
+          - path: /report(/|$)(.*)
+            backend:
+              serviceName: report
+              servicePort: 60003
+          - path: /bpm(/|$)(.*)
+            backend:
+              serviceName: bpm
+              servicePort: 60030
+          - path: /es(/|$)(.*)
+            backend:
+              serviceName: es
+              servicePort: 60002
+          - path: /emcmd(/|$)(.*)
+            backend:
+              serviceName: emcmd
+              servicePort: 60005
+          - path: /emqry(/|$)(.*)
+            backend:
+              serviceName: emqry
+              servicePort: 60006
+          - path: /recruitmentcmd(/|$)(.*)
+            backend:
+              serviceName: recruitmentcmd
+              servicePort: 60013
+          - path: /recruitmentqry(/|$)(.*)
+            backend:
+              serviceName: recruitmentqry
+              servicePort: 60014
+          - path: /tmcmd(/|$)(.*)
+            backend:
+              serviceName: tmcmd
+              servicePort: 60007
+          - path: /tmqry(/|$)(.*)
+            backend:
+              serviceName: tmqry
+              servicePort: 60008
+          - path: /performancecmd(/|$)(.*)
+            backend:
+              serviceName: performancecmd
+              servicePort: 60011
+          - path: /performanceqry(/|$)(.*)
+            backend:
+              serviceName: performanceqry
+              servicePort: 60012
+          - path: /mvcmd(/|$)(.*)
+            backend:
+              serviceName: mvcmd
+              servicePort: 60016
+          - path: /mvqry(/|$)(.*)
+            backend:
+              serviceName: mvqry
+              servicePort: 60017
+          - path: /blacklist(/|$)(.*)
+            backend:
+              serviceName: blacklist
+              servicePort: 60028
+          - path: /cfg(/|$)(.*)
+            backend:
+              serviceName: cfg
+              servicePort: 60032
+          - path: /trncmd(/|$)(.*)
+            backend:
+              serviceName: trncmd
+              servicePort: 60022
+          - path: /trnqry(/|$)(.*)
+            backend:
+              serviceName: trnqry
+              servicePort: 60023
+          - path: /tmncmd(/|$)(.*)
+            backend:
+              serviceName: tmncmd
+              servicePort: 60020
+          - path: /tmnqry(/|$)(.*)
+            backend:
+              serviceName: tmnqry
+              servicePort: 60021
+          - path: /requestcmd(/|$)(.*)
+            backend:
+              serviceName: requestcmd
+              servicePort: 60033
+          - path: /requestqry(/|$)(.*)
+            backend:
+              serviceName: requestqry
+              servicePort: 60034
+          - path: /brms(/|$)(.*)
+            backend:
+              serviceName: brms
+              servicePort: 60031
+          - path: /dashboard(/|$)(.*)
+            backend:
+              serviceName: dashboard
+              servicePort: 60035
+          - path: /template(/|$)(.*)
+            backend:
+              serviceName: template
+              servicePort: 60036
+          - path: /loancmd(/|$)(.*)
+            backend:
+              serviceName: loancmd
+              servicePort: 60024
+          - path: /loanqry(/|$)(.*)
+            backend:
+              serviceName: loanqry
+              servicePort: 60025
+          - path: /elasticsearch(/|$)(.*)
+            backend:
+              serviceName: hcis-elasticsearch
+              servicePort: 60045
+          - path: /notification-fcm(/|$)(.*)
+            backend:
+              serviceName: notification-fcm
+              servicePort: 60040
+          - path: /notification-emails(/|$)(.*)
+            backend:
+              serviceName: notification-emails
+              servicePort: 60049
+          - path: /rabbit(/|$)(.*)
+            backend:
+              serviceName: rabbit
+              servicePort: 60046
+          - path: /erecruitment(/|$)(.*)
+            backend:
+              serviceName: erecruitment
+              servicePort: 60039

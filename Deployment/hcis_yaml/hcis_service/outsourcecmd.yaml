@@ -1,0 +1,19 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: outsourcecmd
+  namespace: ingress-nginx
+  labels:
+    k8s-app: outsourcecmd
+spec:
+  ports:
+    - name: outsourcecmd
+      protocol: TCP
+      port: 60018
+      targetPort: 60018
+  selector:
+    k8s-app: outsourcecmd
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}

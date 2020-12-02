@@ -1,0 +1,19 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: brms
+  namespace: ingress-nginx
+  labels:
+    k8s-app: brms
+spec:
+  ports:
+    - name: brms
+      protocol: TCP
+      port: 60031
+      targetPort: 60031
+  selector:
+    k8s-app: brms
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}

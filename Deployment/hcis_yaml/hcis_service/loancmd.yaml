@@ -1,0 +1,19 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: loancmd
+  namespace: ingress-nginx
+  labels:
+    k8s-app: loancmd
+spec:
+  ports:
+    - name: loancmd
+      protocol: TCP
+      port: 60024
+      targetPort: 60024
+  selector:
+    k8s-app: loancmd
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}

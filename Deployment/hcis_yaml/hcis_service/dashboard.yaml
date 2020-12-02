@@ -1,0 +1,19 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: dashboard
+  namespace: ingress-nginx
+  labels:
+    k8s-app: dashboard
+spec:
+  ports:
+    - name: dashboard
+      protocol: TCP
+      port: 60035
+      targetPort: 60035
+  selector:
+    k8s-app: dashboard
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}

@@ -1,0 +1,19 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: movementscheduler
+  namespace: ingress-nginx
+  labels:
+    k8s-app: movementscheduler
+spec:
+  ports:
+    - name: movementscheduler
+      protocol: TCP
+      port: 60047
+      targetPort: 60047
+  selector:
+    k8s-app: movementscheduler
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}

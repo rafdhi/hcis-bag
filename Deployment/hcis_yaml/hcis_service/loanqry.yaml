@@ -1,0 +1,19 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: loanqry
+  namespace: ingress-nginx
+  labels:
+    k8s-app: loanqry
+spec:
+  ports:
+    - name: loanqry
+      protocol: TCP
+      port: 60025
+      targetPort: 60025
+  selector:
+    k8s-app: loanqry
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}

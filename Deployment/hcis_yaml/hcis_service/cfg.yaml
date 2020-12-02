@@ -1,0 +1,19 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: cfg
+  namespace: ingress-nginx
+  labels:
+    k8s-app: cfg
+spec:
+  ports:
+    - name: cfg
+      protocol: TCP
+      port: 60032
+      targetPort: 60032
+  selector:
+    k8s-app: cfg
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}

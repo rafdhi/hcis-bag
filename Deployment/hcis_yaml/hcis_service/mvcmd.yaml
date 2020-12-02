@@ -1,0 +1,19 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: mvcmd
+  namespace: ingress-nginx
+  labels:
+    k8s-app: mvcmd
+spec:
+  ports:
+    - name: mvcmd
+      protocol: TCP
+      port: 60016
+      targetPort: 60016
+  selector:
+    k8s-app: mvcmd
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}

@@ -1,0 +1,19 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: bizpar
+  namespace: ingress-nginx
+  labels:
+    k8s-app: bizpar
+spec:
+  ports:
+    - name: bizpar
+      protocol: TCP
+      port: 60004
+      targetPort: 60004
+  selector:
+    k8s-app: bizpar
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}

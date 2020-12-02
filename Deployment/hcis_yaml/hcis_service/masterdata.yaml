@@ -1,0 +1,19 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: masterdata
+  namespace: ingress-nginx
+  labels:
+    k8s-app: masterdata
+spec:
+  ports:
+    - name: masterdata
+      protocol: TCP
+      port: 60001
+      targetPort: 60001
+  selector:
+    k8s-app: masterdata
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}

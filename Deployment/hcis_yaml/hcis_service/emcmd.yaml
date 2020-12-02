@@ -1,0 +1,19 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: emcmd
+  namespace: ingress-nginx
+  labels:
+    k8s-app: emcmd
+spec:
+  ports:
+    - name: emcmd
+      protocol: TCP
+      port: 60005
+      targetPort: 60005
+  selector:
+    k8s-app: emcmd
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}

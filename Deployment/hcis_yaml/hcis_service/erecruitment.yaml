@@ -1,0 +1,19 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: erecruitment
+  namespace: ingress-nginx
+  labels:
+    k8s-app: erecruitment
+spec:
+  ports:
+    - name: erecruitment
+      protocol: TCP
+      port: 60039
+      targetPort: 60039
+  selector:
+    k8s-app: erecruitment
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}

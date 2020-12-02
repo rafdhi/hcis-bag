@@ -1,0 +1,19 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: hcis-elasticsearch
+  namespace: ingress-nginx
+  labels:
+    k8s-app: hcis-elasticsearch
+spec:
+  ports:
+    - name: hcis-elasticsearch
+      protocol: TCP
+      port: 60045
+      targetPort: 60045
+  selector:
+    k8s-app: hcis-elasticsearch
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}

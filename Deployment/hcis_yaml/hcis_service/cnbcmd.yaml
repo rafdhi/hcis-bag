@@ -1,0 +1,19 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: cnbcmd
+  namespace: ingress-nginx
+  labels:
+    k8s-app: cnbcmd
+spec:
+  ports:
+    - name: cnbcmd
+      protocol: TCP
+      port: 60009
+      targetPort: 60009
+  selector:
+    k8s-app: cnbcmd
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}

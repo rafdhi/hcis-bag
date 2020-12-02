@@ -1,0 +1,70 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: websocket
+  namespace: ingress-nginx
+  labels:
+    k8s-app: websocket
+  annotations:
+    deployment.kubernetes.io/revision: '1'
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s-app: websocket
+  template:
+    metadata:
+      name: websocket
+      creationTimestamp: null
+      labels:
+        k8s-app: websocket
+    spec:
+      containers:
+        - name: websocket
+          image: 'leevy/hcis-websocket-svc:32da34c'
+          env:
+            - name: HYSTRIX_TIMEOUTINMS
+              value: '600000'
+            - name: HYSTRIX_REQVOLUME_THRESHOLD
+              value: '20'
+            - name: HYSTRIX_SLEEPWINDOWINMS
+              value: '600000'
+            - name: HYSTRIX_ERRORTHRESHOLD
+              value: '50'
+            - name: HYSTRIX_TIMEINMS
+              value: '1800000'
+            - name: RABBITMQ_HOST
+              value: rabbitmq
+            - name: RABBITMQ_USERNAME
+              value: user
+            - name: RABBITMQ_PASSWORD
+              value: 7bzbtBKxqL
+            - name: REDIS_HOST
+              value: 10.96.4.25
+            - name: REDIS_AUTH
+              value: RQ6fNFvCHd
+            - name: REDIS_PORT
+              value: '32095'
+            - name: DEPLOYMENT_ENVIRONMENT
+              value: Staging
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: Always
+          securityContext:
+            privileged: false
+            procMount: Default
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      imagePullSecrets:
+        - name: registrypullsecret
+      schedulerName: default-scheduler
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600

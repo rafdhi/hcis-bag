@@ -1,0 +1,8 @@
+kind: Secret
+apiVersion: v1
+metadata:
+  name: pg-do-pass
+  namespace: ingress-nginx
+data:
+  password: c25HQ2NOdDB3MkpHSFFCclAya2FUbFFWazdIbHhWank=
+type: Opaque

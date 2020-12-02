@@ -1,0 +1,23 @@
+kind: Ingress
+apiVersion: extensions/v1beta1
+metadata:
+  name: web-ingress
+  namespace: hcis-demo
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/affinity: cookie
+    nginx.ingress.kubernetes.io/session-cookie-hash: sha1
+    nginx.ingress.kubernetes.io/session-cookie-name: route
+spec:
+  tls:
+    - hosts:
+        - wstgs.eksadpro.io
+      secretName: letsencrypt-staging
+  rules:
+    - host: wstgs.eksadpro.io
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: web
+              servicePort: 60043

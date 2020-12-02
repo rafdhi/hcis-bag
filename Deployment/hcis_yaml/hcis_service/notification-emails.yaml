@@ -1,0 +1,19 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: notification-emails
+  namespace: ingress-nginx
+  labels:
+    k8s-app: notification-emails
+spec:
+  ports:
+    - name: notification-emails
+      protocol: TCP
+      port: 60049
+      targetPort: 60049
+  selector:
+    k8s-app: notification-emails
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}

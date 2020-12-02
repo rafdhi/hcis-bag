@@ -1,0 +1,19 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: maintenance
+  namespace: ingress-nginx
+  labels:
+    k8s-app: maintenance
+spec:
+  ports:
+    - name: maintenance
+      protocol: TCP
+      port: 80
+      targetPort: 80
+  selector:
+    k8s-app: maintenance
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}
